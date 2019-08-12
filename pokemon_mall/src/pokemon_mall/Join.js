@@ -4,7 +4,7 @@ import axios from 'axios';
 import { inject } from 'mobx-react';
 
 @inject('authStore')
-class Login extends React.Component {
+class Join extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,20 +28,15 @@ class Login extends React.Component {
         }
     }
 
-    login = () => {
+    join = () => {
         axios.post(
-            'http://localhost:8003/o/token/',
+            'http://localhost:8003/users/',
             {
-                grant_type: 'password',
-                client_id: 'fSd9NPsBWgo3oiKFywhzpjBchmZ3qokAjsmNL6mr',
                 username: this.state.username,
                 password: this.state.password
             }
         ).then((response) => {
-            const token = response.data;
-            const { authStore, history } = this.props;
-            authStore.setToken(token);
-            history.push('/');
+            this.props.history.push('/');
         });
     }
 
@@ -57,11 +52,11 @@ class Login extends React.Component {
                         <label>비밀번호</label>
                         <input type="password" name="password" value={this.state.password} onChange={this.onInputChanged} />
                     </p>
-                    <button onClick={this.login}>로그인</button>
+                    <button onClick={this.join}>회원가입</button>
                 </div>
             </div>
         );
     }
 }
 
-export default withRouter(Login);
+export default withRouter(Join);

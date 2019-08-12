@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { inject } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 
+@inject('authStore', 'itemStore')
 class ItemDetail extends React.Component {
 
     constructor(props) {
@@ -33,13 +36,20 @@ class ItemDetail extends React.Component {
             {},
             {
                 headers: {
-                    'Authorization': localStorage.getItem('authorization')
+                    'Authorization': localStorage.getItem('auth_token')
                 }
             }
         ).then((response) => {
             this.props.history.push('/me/items');
         });
 
+    }
+
+    addtocart = () => {
+        const { itemStore } = this.props;
+        const item = this.state.item;
+        itemStore.addItemToCart(item);
+        this.props.history.push('/cart/items');
     }
 
     render() {
@@ -58,10 +68,11 @@ class ItemDetail extends React.Component {
                     </p>
                     <p>{desc}</p>
                     <button onClick={this.purchase}>구입</button>
+                    <button onClick={this.addtocart}>담기</button>
                 </div>
             </div>
         );
     }
 }
 
-export default ItemDetail;
+export default withRouter(ItemDetail);

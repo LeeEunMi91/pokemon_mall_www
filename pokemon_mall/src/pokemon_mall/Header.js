@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import { inject } from 'mobx-react';
 
+@inject('authStore')
 class Header extends React.Component {
 
     constructor(props) {
@@ -22,12 +24,12 @@ class Header extends React.Component {
                 const categories = Response.data;
                 this.setState({
                     categories: categories
-                });
+                }); 
             });
     }
 
     logOut = () => {
-        localStorage.removeItem('authorization');
+        this.props.authStore.deleteToken();
         this.props.history.push('/');
     }
 
@@ -39,12 +41,23 @@ class Header extends React.Component {
         });
         return (
             <header>
-                <Link to="/">PointMall</Link>
+                <Link to="/">PokemonMall</Link>
                 {categories}
 
                 <div className="header-right">
-                    <Link to="/me/items"> My Items </Link>
-                    {localStorage.getItem('authorization')?
+                    {localStorage.getItem('auth_token') ?
+                        <Link to="/me/items"> My Items </Link> :
+                        null
+                    }
+                    {localStorage.getItem('auth_token') ?
+                        <Link to="/cart/items"> Cart </Link> :
+                        null
+                    }
+                    {localStorage.getItem('auth_token') ?
+                        null :
+                        <Link to="/join"> Join </Link>
+                    }
+                    {localStorage.getItem('auth_token')?
                         <Link to='' onClick={this.logOut}> Logout </Link> :
                         <Link to="/login"> Login </Link>
                     }

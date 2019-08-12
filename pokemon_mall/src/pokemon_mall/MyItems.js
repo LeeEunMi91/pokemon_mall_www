@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import ItemBox from './ItemBox';
+import { inject } from 'mobx-react';
 
-
+@inject('authStore')
 class MyItems extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -19,11 +19,12 @@ class MyItems extends React.Component {
     }
 
     getUser = () => {
+        const { authStore } = this.props;
         axios.get(
-            'http://localhost:8003/me/',
+            authStore.BASE_URL + '/me/',
             {
                 headers: {
-                    'Authorization': localStorage.getItem('authorization')
+                    'Authorization': authStore.authToken
                 }
             }
         ).then((response) => {
@@ -38,7 +39,7 @@ class MyItems extends React.Component {
         axios.get('http://localhost:8003/me/items/',
             {
                 headers: {
-                    'Authorization': localStorage.getItem('authorization')
+                    'Authorization': localStorage.getItem('auth_token')
                 }
             }
         ).then((response) => {

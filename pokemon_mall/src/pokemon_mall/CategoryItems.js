@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 import ItemBox from './ItemBox';
 
 class CategotyItems extends React.Component {
