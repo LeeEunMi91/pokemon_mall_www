@@ -11,7 +11,7 @@ class ItemBox extends React.Component {
         const item = this.props.item;
         const count = this.props.count;
         let image = item.image;
-        if (!image.startsWith('http')){
+        if (!image.startsWith('http')) {
             image = 'http://localhost:8003' + image;
         }
         return (
@@ -19,7 +19,7 @@ class ItemBox extends React.Component {
                 <img src={image} alt="" />
                 <p className="item-title">{item.title}</p>
                 <p className="item-price">{count == null ?
-                    '가격 : ' + item.price :
+                    '가격 : ' + item.price + 'P' :
                     '개수 : ' + count}</p>
             </div>
         );

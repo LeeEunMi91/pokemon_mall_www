@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import DataHelper from '../DataHelper';
-
+import Axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Header extends React.Component {
 
-    helper = new DataHelper();
     constructor(props) {
         super(props);
         this.state = {
@@ -19,13 +17,18 @@ class Header extends React.Component {
     }
 
     indexCategories() {
-        axios.get(DataHelper.baseURL() + '/categorys/')
-            .then((response) => {
-                const categories = response.data;
+        Axios.get('http://localhost:8003/categories')
+            .then((Response) => {
+                const categories = Response.data;
                 this.setState({
                     categories: categories
                 });
             });
+    }
+
+    logOut = () => {
+        localStorage.removeItem('authorization');
+        this.props.history.push('/');
     }
 
     render() {
@@ -36,11 +39,14 @@ class Header extends React.Component {
         });
         return (
             <header>
-                <Link to="/">Pokemon_mall</Link>
+                <Link to="/">PointMall</Link>
                 {categories}
+
                 <div className="header-right">
-                    {
-                            <Link to="/login">Login</Link>
+                    <Link to="/me/items"> My Items </Link>
+                    {localStorage.getItem('authorization')?
+                        <Link to='' onClick={this.logOut}> Logout </Link> :
+                        <Link to="/login"> Login </Link>
                     }
                 </div>
             </header>
@@ -48,4 +54,4 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

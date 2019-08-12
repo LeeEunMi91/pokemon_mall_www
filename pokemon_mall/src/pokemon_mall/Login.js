@@ -6,8 +6,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'admin',
-            password: '4444'
+            username: '',
+            password: ''
         };
 
     }
@@ -25,7 +25,11 @@ class Login extends React.Component {
         }
     }
 
-    
+    login = () => {
+        const authorization = 'Basic ' + btoa(this.state.username + ":" + this.state.password);
+        localStorage.setItem("authorization", authorization);
+        this.props.history.push('/');
+    }
 
     render() {
         return (

@@ -49,7 +49,7 @@ class ItemDetail extends React.Component {
         const image = item ? item.image : null;
         return (
             <div id="container">
-                <div class="item-image-container">
+                <div className="item-image-container">
                     <img src={image} alt="" />
                 </div>
                 <div className="item-detail-container">
@@ -57,7 +57,7 @@ class ItemDetail extends React.Component {
                         <b>{title}</b>
                     </p>
                     <p>{desc}</p>
-                    <button>구입</button>
+                    <button onClick={this.purchase}>구입</button>
                 </div>
             </div>
         );
