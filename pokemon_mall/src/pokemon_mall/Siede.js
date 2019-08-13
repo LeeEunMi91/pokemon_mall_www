@@ -4,8 +4,9 @@ export default class Siede extends React.Component{
     render() {
         return(
             <div className='siede'>
-                <img alt='배너' src='http://img1.bizhows.com/bhfile01/temp_COMM_PAGE/201603/21/652/jhlee02/2016081173017909701034.JPG' />
-                <p></p>
+                <a href="http://jr.naver.com/"> <img alt='배너' src='http://www.lotteria.com/images/event/20190425_pokemon.jpg' /></a>
+                <a href="http://daum.net"><img alt='배너' src='http://www.triplestreet.co.kr/pokemon/images/img_modal_fest2_img1.jpg' /></a>
+                
             </div>
         )
     }

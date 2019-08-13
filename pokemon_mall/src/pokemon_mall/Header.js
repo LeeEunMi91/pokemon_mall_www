@@ -36,27 +36,40 @@ class Header extends React.Component {
     render() {
         const categories = this.state.categories.map((category) => {
             return (
-                <Link key={category.id} to={'/categories/' + category.id}>{category.title}</Link>
+                <div className="header-left">
+                    <Link key={category.id} to={'/categories/' + category.id}>{category.title}</Link>
+                </div>
+                
             )
         });
         return (
             <header>
-                <Link to="/">PokemonMall</Link>
-                {categories}
-
+                <div className="header-left">
+                    <Link to="/"><img src='https://pokemonkorea.co.kr/templates/default/style/img/sub_logo_top.png' alt='이미지'/></Link>
+                </div>
+                <div className="header-left">
+                    <Link to="/all">전체보기</Link>
+                </div>
+                    {categories}
                 <div className="header-right">
                     {localStorage.getItem('auth_token') ?
                         <Link to="/me/items"> My Items </Link> :
                         null
                     }
+                    </div>
+                <div className="header-right">
                     {localStorage.getItem('auth_token') ?
                         <Link to="/cart/items"> Cart </Link> :
                         null
                     }
+                </div>
+                <div className="header-right">
                     {localStorage.getItem('auth_token') ?
                         null :
                         <Link to="/join"> Join </Link>
                     }
+                    </div>
+                <div className="header-right">
                     {localStorage.getItem('auth_token')?
                         <Link to='' onClick={this.logOut}> Logout </Link> :
                         <Link to="/login"> Login </Link>

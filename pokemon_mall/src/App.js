@@ -13,6 +13,7 @@ import CartItems from './pokemon_mall/CartItems';
 import ObserverTest from './observer/ObserverTest';
 import Join from './pokemon_mall/Join';
 import Siede from './pokemon_mall/Siede';
+import Main from './pokemon_mall/Main';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
       <div>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Main} />
+          <Route exact path="/all" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/join" component={Join} />
           <Route exact path="/items/:itemId" component={ItemDetail} />

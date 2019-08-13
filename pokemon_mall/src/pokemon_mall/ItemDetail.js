@@ -61,11 +61,13 @@ class ItemDetail extends React.Component {
             <div id="container">
                 <div className="item-image-container">
                     <img src={image} alt="" />
-                </div>
-                <div className="item-detail-container">
-                    <p>
+                    <p className='title header-left'>
                         <b>{title}</b>
                     </p>
+                </div>
+                <div className="item-detail-container">
+                    <h3> - 상세설명 - </h3>
+                <hr />
                     <p>{desc}</p>
                     <button onClick={this.purchase}>구입</button>
                     <button onClick={this.addtocart}>담기</button>

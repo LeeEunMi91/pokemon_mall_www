@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
-import RootStore from './RootStore';
+import RootStore from './Store/RootStore';
 
 const rootStore = new RootStore();
 
