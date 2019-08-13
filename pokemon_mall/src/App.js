@@ -12,6 +12,7 @@ import CategoryItems from './pokemon_mall/CategoryItems';
 import CartItems from './pokemon_mall/CartItems';
 import ObserverTest from './observer/ObserverTest';
 import Join from './pokemon_mall/Join';
+import Siede from './pokemon_mall/Siede';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/cart/items" component={CartItems} />
           <Route exact path="/observer-test" component={ObserverTest} />
         </Switch>
+        <Siede />
         <Footer />
       </div>
     </Router>

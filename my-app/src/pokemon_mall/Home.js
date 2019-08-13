@@ -8,45 +8,23 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
-            hide: false
+            items: []
         };
     }
 
     componentDidMount() {
         this.indexItems();
-        this.checkHide();
     }
 
     indexItems() {
         axios.get('http://localhost:8003/items/')
             .then((response) => {
                 const items = response.data;
+                console.log(items);
                 this.setState({
                     items: items
                 })
             });
-    }
-
-    checkHide() {
-        const hideDate = new Date(localStorage.getItem('hideTill'));
-        if (hideDate) {
-            const now = new Date();
-            if (now.getTime() < hideDate.getTime()) {
-                this.setState({
-                    hide: true
-                });
-            }
-        }
-    }
-
-    hideForADay = () => {
-        const todayDate = new Date();
-        todayDate.setDate(todayDate.getDate() + 1);
-        localStorage.setItem('hideTill', todayDate);
-        this.setState({
-            hide: true
-        });
     }
 
     render() {
@@ -55,6 +33,8 @@ class Home extends React.Component {
                 <ItemBox key={item.id} item={item} />
             )
         });
+        console.log(this.state.items);
+        
         return (
             <div>
                 <div id="container">
@@ -62,17 +42,9 @@ class Home extends React.Component {
                         {items}
                     </div>
                 </div>
-                {
-                    !this.state.hide &&
-                    <div className="modal">
-                        <button onClick={this.hideForADay} className="btn_close">오늘하루열지않음</button>
-
-                    </div>
-                }
             </div>
         );
     }
 }
 
 export default Home;
-
