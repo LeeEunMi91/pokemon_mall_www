@@ -13,7 +13,7 @@
 
 header {
     background-color: #FFCB06;
-    height: 60px;
+    height: 70px;
     padding: 20px 20px;
     padding-left: 100px;
     overflow: hidden;
@@ -41,7 +41,7 @@ header img {
   position: absolute;
   top: 10px;
   left: 5px;
-  height: 40px;
+  height: 45px;
 }
 
 header a:hover {
@@ -82,6 +82,8 @@ header a:hover {
     float: left;
     margin: 10px;
     cursor: pointer;
+    border: #bcbc 1px solid;
+
 }
 
 .item-container:hover {
@@ -133,15 +135,27 @@ header a:hover {
 }
 
 .siede {
-  width: 130px;
-  height: 100px;
+  width: 110px;
+  height: 80px;
   position: fixed;
-  right: 10px;
-  top: 60px;   
+  right: 65px;
+  top: 70px;   
 }
 
 .siede img {
-  width: 100%;
-  height: 400px;
+  width: 160%;
+  height: 300px;
 }
 
+.siede-two {
+  width: 110px;
+  height: 80px;
+  position: fixed;
+  right: 35px;
+  top: 685px;   
+}
+
+.siede-two img {
+  width: 100%;
+  height: 70px;
+}
