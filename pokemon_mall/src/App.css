@@ -12,11 +12,13 @@
 
 
 header {
-    background-color: #FFCB06;
     height: 70px;
     padding: 20px 20px;
-    padding-left: 100px;
     overflow: hidden;
+}
+
+.padding-left{
+  padding-left: 100px;
 }
 
 footer {
@@ -127,7 +129,8 @@ header a:hover {
 
 .title {
   color: white;
-  margin-left: 20px
+  overflow: hidden;
+  padding-left: 15px;
 }
 
 .item-detail-container {
@@ -148,7 +151,7 @@ header a:hover {
 }
 
 .siede-two {
-  width: 110px;
+  width: 100px;
   height: 80px;
   position: fixed;
   right: 35px;
@@ -158,4 +161,48 @@ header a:hover {
 .siede-two img {
   width: 100%;
   height: 70px;
+  
+}
+
+.button {
+  width: 110px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  padding: 13px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.N_Pay {
+  width: 15px;
+  height: 20px;
+  margin-right: 0;
+  color: #00bd39;
+  background-color: white;
+}
+
+.green {
+  background-color: #00bd39;
+  color: white;
+}
+
+.green:hover {
+  background-color: #00b000;
+}
+
+.white {
+  background-color: whitesmoke;
+}
+
+.orenge{
+  background-color: #FFCB06;
+}
+
+.item-detail-container {
+  text-decoration:none;
+  color: rgb(0, 0, 0);
+  height: 70px;
+  padding: 20px 20px;
+  padding-left: 100px;
 }

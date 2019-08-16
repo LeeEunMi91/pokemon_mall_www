@@ -43,7 +43,7 @@ class Header extends React.Component {
             )
         });
         return (
-            <header>
+            <header className='orenge padding-left'>
                 <div className="header-left">
                     <Link to="/"><img src='https://pokemonkorea.co.kr/templates/default/style/img/sub_logo_top.png' alt='이미지'/></Link>
                 </div>
